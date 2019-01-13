@@ -10,7 +10,7 @@ source ${WORKDIR}/cmd
 chain "${@}"
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.logical-routers.list.sh)
+INPUT=$(${WORKDIR}/drv.logical-routers.list)
 
 ## build record structure
 read -r -d '' INPUTSPEC <<-CONFIG

@@ -10,7 +10,7 @@ source ${WORKDIR}/cmd
 chain "${@}"
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.transport-zones.list.sh)
+INPUT=$(${WORKDIR}/drv.transport-zones.list)
 
 ## build record structure
 #.id, .display_name, .host_switch_name, .transport_type

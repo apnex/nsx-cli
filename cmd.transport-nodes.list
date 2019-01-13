@@ -10,7 +10,7 @@ source ${WORKDIR}/cmd
 chain "${@}"
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.transport-nodes.list.sh)
+INPUT=$(${WORKDIR}/drv.transport-nodes.list)
 
 ## build record structure
 read -r -d '' INPUTSPEC <<-CONFIG

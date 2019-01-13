@@ -10,7 +10,7 @@ source ${WORKDIR}/cmd
 INPUTS=$(chain "${@}")
 
 ## input driver
-INPUT=$(${WORKDIR}/drv.logical-switches.status.sh "${INPUTS[0]}")
+INPUT=$(${WORKDIR}/drv.logical-switches.status "${INPUTS[0]}")
 
 ## build record structure
 read -r -d '' INPUTSPEC <<-CONFIG
