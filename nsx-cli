@@ -3,17 +3,18 @@ if [[ $0 =~ ^(.*)/([^/]+)$ ]]; then
 	WORKDIR="${BASH_REMATCH[1]}"
 	CALLED="${BASH_REMATCH[2]}"
 fi
+if [ -z ${SDDCDIR} ]; then
+	SDDCDIR=${PWD}
+fi
 
 function buildBash {
 read -r -d '' BASHSPEC <<CONFIG
 #!/bin/bash
 _${CALLED}_complete() {
-	## init
-	local CUR PRV
-	COMPREPLY=()
-	CUR="\${COMP_WORDS[COMP_CWORD]}"
-	PRV="\${COMP_WORDS[COMP_CWORD-1]}"
-
+	## lock completion to first arg only
+	if [ \${#COMP_WORDS[@]} != "2" ]; then
+		return
+	fi
 	## temporarily set WIDTH to 0
 	local WIDTH=\$(bind -v | sed -n 's/^set completion-display-width //p')
 	if [[ \${WIDTH} -ne 0 ]]; then
@@ -21,60 +22,44 @@ _${CALLED}_complete() {
 		PROMPT_COMMAND="PROMPT_COMMAND=\$(printf %q "\${PROMPT_COMMAND}")"
 		PROMPT_COMMAND+="; bind 'set completion-display-width \${WIDTH}'"
 	fi
-
-	# bind settings
-	bind "set history-preserve-point off"
-	bind "set show-all-if-ambiguous on"
-	bind "set show-all-if-unmodified off"
-	bind "set colored-completion-prefix on"
-
-	local ARRAY=()
-	if [[ \${PRV} != "list" ]]; then
-		if [[ \${#COMP_WORDS[@]} -ge 2 ]]; then
-			ARRAY=\$(${CALLED} "\${COMP_WORDS[@]:1:\${#COMP_WORDS[@]}-2}" 2>/dev/null | tr -d '\r') # handle CRLF in tty
-		else
-			ARRAY=\$(${CALLED} list 2>/dev/null | tr -d '\r') # handle CRLF in tty
-		fi
-
-		local IFS=$'\n'
-		local HEADER=("\${ARRAY[0]}")
-		local VALUES=("\${ARRAY[@]:1}")
-		local SUGGESTIONS=(\$(compgen -W "\${VALUES[@]}" -- "\${CUR}"))
-		if [ "\${#SUGGESTIONS[@]}" -ge "2" ]; then #print header/values
-			printf "\n\${HEADER}"
-			for i in "\${!SUGGESTIONS[@]}"; do
-				SUGGESTIONS[$i]="\$(printf '%*s' "-\$COLUMNS"  "\${SUGGESTIONS[$i]}")"
-			done
-			COMPREPLY=("\${SUGGESTIONS[@]}")
-		else
-			if [ "\${#SUGGESTIONS[@]}" == "1" ]; then
-				local ID="\${SUGGESTIONS[0]/%\ */}"
-				COMPREPLY=("\$ID")
-			fi
-		fi
-	fi
-	return 0
+	## build command array
+	local ARRAY=\$(${CALLED} list | tr -d '\r') # handle CRLF in tty
+	local SUGGESTIONS=(\$(compgen -W "\${ARRAY[@]}" -- "\${COMP_WORDS[1]}"))
+	## return commands
+	COMPREPLY=("\${SUGGESTIONS[@]}")
 }
 complete -F _${CALLED}_complete ${CALLED}
 CONFIG
 printf "%s\n" "${BASHSPEC}"
 }
 
-INPUTS=("${@}")
-case "${INPUTS[0]}" in
-	'install') ## list commands
-		BASHFILE="${CALLED}.complete.bash"
-		printf "install [${BASHFILE}] to [/etc/bash_completion.d/]\n" 1>&2
-		buildBash >"/etc/bash_completion.d/${BASHFILE}"
-		# load into current user bin dir! (parse ENV and default to current user/bin)
-	;;
-	'') ## no command - default
-		#printf "\n[$@]\n" 1>&2
-		./cmd list
-	;;
-	*) ## list commands
-		#printf "\n[$@]\n" 1>&2
-		#echo "UNKNOWN COMMAND!"
-		./cmd "${INPUTS[@]}"
-	;;
-esac
+# launch & persist (run + exec)
+if [[ -n "$1" ]]; then
+	case "${1}" in
+		'install') ## list commands
+			BASHFILE="${CALLED}.complete.bash"
+			printf "install [${BASHFILE}] to [/etc/bash_completion.d/]\n" 1>&2
+			buildBash >"/etc/bash_completion.d/${BASHFILE}"
+		;;
+		'stop') ## list commands
+			printf "[apnex/${CALLED}] stopping\n" 1>&2
+			docker rm -f ${CALLED} 2>/dev/null
+		;;
+		*) ## cleanup stopped - then launch + persist (run + exec)
+			docker rm -v $(docker ps -qa -f name=${CALLED} -f status=exited) 2>/dev/null
+			RUNNING=$(docker ps -q -f name="${CALLED}")
+			if [[ -z "$RUNNING" ]]; then
+				printf "[apnex/${CALLED}] not running - now starting\n" 1>&2
+				docker run -id --name ${CALLED} --entrypoint=/bin/sh apnex/${CALLED} 1>&2
+			fi
+			RUNNING=$(docker ps -q -f name="${CALLED}")
+			if [[ -n "$RUNNING" ]]; then
+				docker exec -t ${CALLED} ${CALLED} "${@}"
+			fi
+		;;
+	esac
+fi
+
+# single (run)
+#docker rm -f ${CALLED} 2>/dev/null
+#docker run -t --rm -v ${SDDCDIR}:/cfg apnex/${CALLED} ${1} ${2} ${3}

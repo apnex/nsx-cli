@@ -1,0 +1,9 @@
+FROM alpine
+RUN apk --no-cache add \
+	bash \
+	util-linux \
+	curl \
+	jq
+COPY lib /root/nsx
+RUN ln -s /root/nsx/cmd /usr/bin/nsx-cli
+ENTRYPOINT ["nsx-cli"]

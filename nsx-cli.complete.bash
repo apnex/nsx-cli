@@ -6,19 +6,23 @@ _nsx-cli_complete() {
 	CUR="${COMP_WORDS[COMP_CWORD]}"
 	PRV="${COMP_WORDS[COMP_CWORD-1]}"
 
-	## temporarily set WIDTH to 0
-	local WIDTH=$(bind -v | sed -n 's/^set completion-display-width //p')
-	if [[ ${WIDTH} -ne 0 ]]; then
-		bind "set completion-display-width 0"
-		PROMPT_COMMAND="PROMPT_COMMAND=$(printf %q "${PROMPT_COMMAND}")"
-		PROMPT_COMMAND+="; bind 'set completion-display-width ${WIDTH}'"
-	fi
-
-	# bind settings
+	## temporary bind settings
+	#local WIDTH=$(bind -v | sed -n 's/^set completion-display-width //p')
+	#local POINT=$(bind -v | sed -n 's/^set history-preserve-point //p')
+	#local AMBIG=$(bind -v | sed -n 's/^set show-all-if-ambiguous //p')
+	#local UNMOD=$(bind -v | sed -n 's/^set show-all-if-unmodified //p')
+	#local COLOR=$(bind -v | sed -n 's/^set colored-completion-prefix //p')
+	bind "set completion-display-width 0"
 	bind "set history-preserve-point on"
 	bind "set show-all-if-ambiguous on"
 	bind "set show-all-if-unmodified on"
 	bind "set colored-completion-prefix on"
+	#PROMPT_COMMAND="PROMPT_COMMAND=$(printf %q "${PROMPT_COMMAND}")"
+	#PROMPT_COMMAND+="; bind 'set completion-display-width ${WIDTH}'"
+	#PROMPT_COMMAND+="; bind 'set history-preserve-point ${POINT}'"
+	#PROMPT_COMMAND+="; bind 'set show-all-if-ambiguous ${AMBIG}'"
+	#PROMPT_COMMAND+="; bind 'set show-all-if-unmodified ${UNMOD}'"
+	#PROMPT_COMMAND+="; bind 'set colored-completion-prefix ${COLOR}'"
 
 	NC='\033[0m' # no colour
 	BLACK='\033[0;30m' # black
@@ -26,7 +30,7 @@ _nsx-cli_complete() {
 	GREEN='\033[0;32m' # green
 
 	local ARRAY=()
-	if [[ ${PRV} != "list" ]]; then
+	if [[ ${PRV} != "get" ]]; then
 		local IFS=$'\n'
 		if [[ ${#COMP_WORDS[@]} -ge 2 ]]; then
 			ARRAY=($(nsx-cli "[]" "${COMP_WORDS[@]:1:${#COMP_WORDS[@]}-2}" 2>/dev/null | tr -d '\r')) # handle CRLF in tty
