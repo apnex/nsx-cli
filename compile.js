@@ -2,7 +2,8 @@
 let args = process.argv;
 const hd = require('heredoc');
 const fs = require('fs');
-const cmdSpec = require('./nsx-full-spec.json');
+//const cmdSpec = require('./nsx-full-spec.json');
+const cmdSpec = require('./24-full-spec.json');
 
 // cli switch
 var item = args[2];
@@ -116,9 +117,9 @@ function writeFile(fileName) {
 		IFS=$'\n'
 		INPUTS=($(chain "${@}"))
 		case "${INPUTS[0]}" in
-			#run) # run
-			#	run "${INPUTS[@]:1}"
-			#;;
+			run) # run
+				#run "${INPUTS[@]:1}"
+			;;
 			*) # tab
 				printf "%s\n" "${INPUTS[@]}" | uniq
 			;;

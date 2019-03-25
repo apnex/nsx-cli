@@ -1,4 +1,37 @@
 #!/bin/bash
+temp-bind() {
+	## temporarily change a bunch of bind terminal settings
+	local OLDSETTINGS
+	local WIDTH=$(bind -v | sed -n 's/^set completion-display-width //p')
+	local POINT=$(bind -v | sed -n 's/^set history-preserve-point //p')
+	local AMBIG=$(bind -v | sed -n 's/^set show-all-if-ambiguous //p')
+	local UNMOD=$(bind -v | sed -n 's/^set show-all-if-unmodified //p')
+	local COLOR=$(bind -v | sed -n 's/^set colored-completion-prefix //p')
+	if [[ "${WIDTH}" -ne 0 ]]; then
+		bind "set completion-display-width 0"
+		OLDSETTINGS+="; bind 'set completion-display-width ${WIDTH}'"
+	fi
+	if [[ "${AMBIG}" == "off" ]]; then
+		bind "set show-all-if-ambiguous on"
+		OLDSETTINGS+="; bind 'set show-all-if-ambiguous ${AMBIG}'"
+	fi
+	if [[ "${POINT}" == "off" ]]; then
+		bind "set history-preserve-point on"
+		OLDSETTINGS+="; bind 'set history-preserve-point ${POINT}'"
+	fi
+	if [[ "${UNMOD}" == "off" ]]; then
+		bind "set show-all-if-unmodified on"
+		OLDSETTINGS+="; bind 'set show-all-if-unmodified ${UNMOD}'"
+	fi
+	if [[ "${COLOR}" == "off" ]]; then
+		bind "set colored-completion-prefix on"
+		OLDSETTINGS+="; bind 'set colored-completion-prefix ${COLOR}'"
+	fi
+	if [[ -n "${OLDSETTINGS}" ]]; then # reset bind settings to previous
+		PROMPT_COMMAND="PROMPT_COMMAND=$(printf %q "${PROMPT_COMMAND}")"
+		PROMPT_COMMAND+="${OLDSETTINGS}"
+	fi
+}
 _nsx-cli_complete() {
 	## init
 	local CUR PRV
@@ -6,28 +39,12 @@ _nsx-cli_complete() {
 	CUR="${COMP_WORDS[COMP_CWORD]}"
 	PRV="${COMP_WORDS[COMP_CWORD-1]}"
 
-	## temporary bind settings
-	#local WIDTH=$(bind -v | sed -n 's/^set completion-display-width //p')
-	#local POINT=$(bind -v | sed -n 's/^set history-preserve-point //p')
-	#local AMBIG=$(bind -v | sed -n 's/^set show-all-if-ambiguous //p')
-	#local UNMOD=$(bind -v | sed -n 's/^set show-all-if-unmodified //p')
-	#local COLOR=$(bind -v | sed -n 's/^set colored-completion-prefix //p')
-	bind "set completion-display-width 0"
-	bind "set history-preserve-point on"
-	bind "set show-all-if-ambiguous on"
-	bind "set show-all-if-unmodified on"
-	bind "set colored-completion-prefix on"
-	#PROMPT_COMMAND="PROMPT_COMMAND=$(printf %q "${PROMPT_COMMAND}")"
-	#PROMPT_COMMAND+="; bind 'set completion-display-width ${WIDTH}'"
-	#PROMPT_COMMAND+="; bind 'set history-preserve-point ${POINT}'"
-	#PROMPT_COMMAND+="; bind 'set show-all-if-ambiguous ${AMBIG}'"
-	#PROMPT_COMMAND+="; bind 'set show-all-if-unmodified ${UNMOD}'"
-	#PROMPT_COMMAND+="; bind 'set colored-completion-prefix ${COLOR}'"
-
+	temp-bind
 	NC='\033[0m' # no colour
 	BLACK='\033[0;30m' # black
 	RED='\033[0;31m' # red
 	GREEN='\033[0;32m' # green
+	CYAN='\033[0;36m' # cyan
 
 	local ARRAY=()
 	if [[ ${PRV} != "get" ]]; then
@@ -45,7 +62,7 @@ _nsx-cli_complete() {
 
 		local SUGGESTIONS=($(compgen -W "${VALUES[*]}" -- "${CUR}"))
 		if [ "${#SUGGESTIONS[@]}" -ge "2" ]; then #print header/values
-			printf "\n${GREEN}${HEADER}${NC}" 1>&2
+			printf "\n${CYAN}${HEADER}${NC}" 1>&2
 			for I in "${!SUGGESTIONS[@]}"; do
 				SUGGESTIONS[$I]="$(printf '%*s' "-$COLUMNS"  "${SUGGESTIONS[$I]}")"
 			done

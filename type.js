@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 let args = process.argv;
-const apiSpec = require('./nsx-api.json');
+//const apiSpec = require('./nsx-api.json');
+const apiSpec = require('./nsx-api-2-4.json');
 //const apiSpec = require('./vcenter.json');
 //const apiSpec = require('./oms-api-5.1.json');
 const paths = apiSpec.paths;

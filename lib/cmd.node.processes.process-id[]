@@ -22,9 +22,9 @@ run() {
 IFS=$'\n'
 INPUTS=($(chain "${@}"))
 case "${INPUTS[0]}" in
-	#run) # run
-	#	run "${INPUTS[@]:1}"
-	#;;
+	run) # run
+		#run "${INPUTS[@]:1}"
+	;;
 	*) # tab
 		printf "%s\n" "${INPUTS[@]}" | uniq
 	;;

@@ -50,7 +50,7 @@ if [[ -n "$1" ]]; then
 			RUNNING=$(docker ps -q -f name="${CALLED}")
 			if [[ -z "$RUNNING" ]]; then
 				printf "[apnex/${CALLED}] not running - now starting\n" 1>&2
-				docker run -id --name ${CALLED} --entrypoint=/bin/sh apnex/${CALLED} 1>&2
+				docker run -id --name ${CALLED} -v ${PWD}/sddc.parameters:/root/nsx/sddc.parameters --entrypoint=/bin/sh apnex/${CALLED} 1>&2
 			fi
 			RUNNING=$(docker ps -q -f name="${CALLED}")
 			if [[ -n "$RUNNING" ]]; then

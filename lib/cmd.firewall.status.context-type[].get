@@ -11,21 +11,31 @@ source ${WORKDIR}/drv.core
 source ${WORKDIR}/cmd
 run() {
 	## input driver
-	local INPUT=("${@}")
 	local ITEM
 	if [[ $CALLED =~ cmd[.](.+)$ ]]; then
 		ITEM=$(printf "${BASH_REMATCH[1]}")
 	fi
-	local INPUT=$(${WORKDIR}/drv.${ITEM} "${INPUT[@]}")
+	local INPUT=$(${WORKDIR}/drv.${ITEM})
 	printf "${INPUT}" | jq --tab .
 }
 IFS=$'\n'
 INPUTS=($(chain "${@}"))
 case "${INPUTS[0]}" in
-	run) # run
-		run "${INPUTS[@]:1}"
-	;;
+	#run) # run
+	#	run
+	#;;
 	*) # tab
-		printf "%s\n" "${INPUTS[@]}" | uniq
+		INPUT=$(run)
+		## build record structure
+		read -r -d '' INPUTSPEC <<-CONFIG
+			.results | map({
+				"id": .id,
+				"name": .display_name,
+				"resource_type": .resource_type
+			})
+		CONFIG
+		PAYLOAD=$(echo "$INPUT" | jq -r "$INPUTSPEC")
+		## output
+		buildTable "${PAYLOAD}"
 	;;
 esac

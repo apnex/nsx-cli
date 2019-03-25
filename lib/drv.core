@@ -170,8 +170,10 @@ function buildTable {
 	CONFIG
 	local IFS=$'\n'
 	local RESULT=($(echo "$INPUT" | jq -r "$JQTABLE | .[] | @tsv" | column -t -s $'\t'))
-	printf "${CYAN}${RESULT[0]}${NC}\n"
-	printf "%s\n" "${RESULT[@]:1}"
+	if [ "${#RESULT[@]}" -ge "2" ]; then
+		printf "${CYAN}${RESULT[0]}${NC}\n"
+		printf "%s\n" "${RESULT[@]:1}"
+	fi
 }
 
 ## filter payload with string
