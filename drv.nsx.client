@@ -40,8 +40,20 @@ function isSuccess {
 		2[0-9][0-9])
 			printf "SUCCESS\n" 1>&2
 		;;
-		40[0-3])
+		400)
+			printf "ERROR\n" 1>&2
+			if [ -f "${SESSION}" ]; then
+				rm "${SESSION}"
+			fi
+		;;
+		40[1-3])
 			printf "ERROR-AUTH\n" 1>&2
+			if [ -f "${SESSION}" ]; then
+				rm "${SESSION}"
+			fi
+		;;
+		404)
+			printf "ERROR-NOTFOUND\n" 1>&2
 			if [ -f "${SESSION}" ]; then
 				rm "${SESSION}"
 			fi
@@ -120,6 +132,24 @@ function nsxPost {
 	local BODY=${2}
 	if [[ "$NSXONLINE" == "true" ]]; then
 		RESPONSE=$(curl -k -b "${STATEDIR}/nsx.cookies.txt" -w "%{http_code}" -X POST \
+			-H "X-Allow-Overwrite: true" \
+			-H "X-XSRF-TOKEN: $(cat ${NSXSESSION})" \
+			-H "Content-Type: application/json" \
+			-d "$BODY" \
+		"$URL" 2>/dev/null)
+		RESULT=$(isSuccess "${RESPONSE}")
+	else
+		printf "[$(ccyan "OFFLINE")] - SUCCESS\n" 1>&2
+	fi
+	printf "%s\n" "${RESULT}" | jq --tab .
+}
+
+function nsxPut {
+	local URL=${1}
+	local BODY=${2}
+	if [[ "$NSXONLINE" == "true" ]]; then
+		RESPONSE=$(curl -k -b "${STATEDIR}/nsx.cookies.txt" -w "%{http_code}" -X PUT \
+			-H "X-Allow-Overwrite: true" \
 			-H "X-XSRF-TOKEN: $(cat ${NSXSESSION})" \
 			-H "Content-Type: application/json" \
 			-d "$BODY" \
@@ -137,6 +167,7 @@ function nsxDelete {
 	if [[ "$NSXONLINE" == "true" ]]; then
 		STATE=$(getFile "${URL}")
 		RESPONSE=$(curl -k -b "${STATEDIR}/nsx.cookies.txt" -w "%{http_code}" -G -X DELETE \
+			-H "X-Allow-Overwrite: true" \
 			-H "X-XSRF-TOKEN: $(cat ${NSXSESSION})" \
 			-H "Content-Type: application/x-form-urlencoded" \
 			--data-urlencode "$BODY" \
