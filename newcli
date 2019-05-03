@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+let args = process.argv.slice(2);
+
+run(args);
+
+function run(args) {
+	let chain = '';
+	let action = args.pop();
+	args.forEach((key) => {
+		if(!key.match(/^.+\[\]$/)) {	
+			chain += '/' + key;
+		}
+	});
+	console.log('--[ ' + chain + ' ]--');
+
+	console.log('ACTION: ' + action);
+	let url = 'https://nsxm01.lab/api/v1' + chain;
+	console.log(url);
+}

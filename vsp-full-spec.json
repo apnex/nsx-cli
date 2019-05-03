@@ -1,0 +1,188 @@
+{
+	"com": {
+		"vmware": {
+			"vcenter": {
+				"inventory": {},
+				"iso": {
+					"image": {}
+				},
+				"ovf": {
+					"export-flag": {
+						"get": 1
+					},
+					"import-flag": {
+						"get": 1
+					},
+					"library-item": {
+						"get": 1
+					}
+				}
+			}
+		}
+	},
+	"vcenter": {
+		"cluster": {
+			"get": 1,
+			"{cluster}": {
+				"get": 1
+			}
+		},
+		"datacenter": {
+			"get": 1,
+			"{datacenter}": {
+				"get": 1
+			}
+		},
+		"datastore": {
+			"get": 1,
+			"{datastore}": {
+				"get": 1
+			}
+		},
+		"folder": {
+			"get": 1
+		},
+		"host": {
+			"get": 1,
+			"{host}": {
+				"get": 1,
+				"connect": {
+					"get": 1
+				},
+				"disconnect": {
+					"get": 1
+				}
+			}
+		},
+		"network": {
+			"get": 1
+		},
+		"resource-pool": {
+			"get": 1,
+			"{resource_pool}": {
+				"get": 1
+			}
+		},
+		"vm": {
+			"get": 1,
+			"{vm}": {
+				"get": 1,
+				"hardware": {
+					"get": 1,
+					"action": {
+						"upgrade": {
+							"get": 1
+						}
+					},
+					"adapter": {
+						"sata": {
+							"get": 1,
+							"{adapter}": {
+								"get": 1
+							}
+						},
+						"scsi": {
+							"get": 1,
+							"{adapter}": {
+								"get": 1
+							}
+						}
+					},
+					"boot": {
+						"get": 1,
+						"device": {
+							"get": 1
+						}
+					},
+					"cdrom": {
+						"get": 1,
+						"{cdrom}": {
+							"get": 1,
+							"connect": {
+								"get": 1
+							},
+							"disconnect": {
+								"get": 1
+							}
+						}
+					},
+					"cpu": {
+						"get": 1
+					},
+					"disk": {
+						"get": 1,
+						"{disk}": {
+							"get": 1
+						}
+					},
+					"ethernet": {
+						"get": 1,
+						"{nic}": {
+							"get": 1,
+							"connect": {
+								"get": 1
+							},
+							"disconnect": {
+								"get": 1
+							}
+						}
+					},
+					"floppy": {
+						"get": 1,
+						"{floppy}": {
+							"get": 1,
+							"connect": {
+								"get": 1
+							},
+							"disconnect": {
+								"get": 1
+							}
+						}
+					},
+					"memory": {
+						"get": 1
+					},
+					"parallel": {
+						"get": 1,
+						"{port}": {
+							"get": 1,
+							"connect": {
+								"get": 1
+							},
+							"disconnect": {
+								"get": 1
+							}
+						}
+					},
+					"serial": {
+						"get": 1,
+						"{port}": {
+							"get": 1,
+							"connect": {
+								"get": 1
+							},
+							"disconnect": {
+								"get": 1
+							}
+						}
+					}
+				},
+				"power": {
+					"get": 1,
+					"reset": {
+						"get": 1
+					},
+					"start": {
+						"get": 1
+					},
+					"stop": {
+						"get": 1
+					},
+					"suspend": {
+						"get": 1
+					}
+				}
+			}
+		}
+	}
+}

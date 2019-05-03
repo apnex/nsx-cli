@@ -16,7 +16,7 @@ run() {
 		ITEM=$(printf "${BASH_REMATCH[1]}")
 	fi
 	local INPUT=$(${WORKDIR}/drv.${ITEM})
-	printf "${INPUT}" | jq --tab .
+	printf "%s" "${INPUT}" | jq --tab .
 }
 IFS=$'\n'
 INPUTS=($(chain "${@}"))

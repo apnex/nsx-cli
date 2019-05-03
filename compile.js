@@ -2,7 +2,7 @@
 let args = process.argv;
 const hd = require('heredoc');
 const fs = require('fs');
-//const cmdSpec = require('./nsx-full-spec.json');
+//const cmdSpec = require('./vsp-full-spec.json');
 const cmdSpec = require('./24-full-spec.json');
 
 // cli switch
@@ -12,10 +12,15 @@ compile(cmdSpec);
 
 function compile(spec) {
 	//console.log(JSON.stringify(spec, null, "\t"));
+	let dir = './lib';
+	if (!fs.existsSync(dir)){
+		fs.mkdirSync(dir);
+	}
 	myTree([], spec);
 	fs.copyFile('./cmd', './lib/cmd', () => {});
 	fs.copyFile('./drv.core', './lib/drv.core', () => {});
 	fs.copyFile('./drv.nsx.client', './lib/drv.nsx.client', () => {});
+	fs.copyFile('./drv.vsp.client', './lib/drv.vsp.client', () => {});
 	fs.copyFile('./sddc.parameters', './lib/sddc.parameters', () => {});
 }
 
@@ -26,14 +31,16 @@ function myTree(keys, cmds) {
 		if(matches = key.match(/\{(.+)\}/)) {
 			key = matches[1] + '[]';
 			let drvFile = 'cmd.' + newKeys.join('.') + '.get';
-			console.log('summary driver: ' + drvFile);
+			console.log('summary cmd driver: ' + key + ':::' + drvFile);
 			//if(!fs.existsSync(drvFile)) {
 				writeList(drvFile);
 			//}
 		}
 		newKeys.push(key);
+		//console.log('summary cmd driver: ' + key + '---');
 		if(key == 'get') {
 			let drvFile = 'drv.' + newKeys.join('.');
+			//console.log('moo summary cmd driver: ' + drvFile);
 			//if(!fs.existsSync(drvFile)) {
 				writeDriver(drvFile);
 			//}
@@ -54,7 +61,7 @@ function myTree(keys, cmds) {
 }
 
 function writeLeaf(fileName) {
-	let body = hd.strip(function() {/*
+	let body = hd.strip(() => {/*
 		#!/bin/bash
 		FILEPATH=$0
 		if [[ -L ${FILEPATH} ]]; then
@@ -74,7 +81,7 @@ function writeLeaf(fileName) {
 				ITEM=$(printf "${BASH_REMATCH[1]}")
 			fi
 			local INPUT=$(${WORKDIR}/drv.${ITEM} "${INPUT[@]}")
-			printf "${INPUT}" | jq --tab .
+			printf "%s" "${INPUT}" | jq --tab .
 		}
 		IFS=$'\n'
 		INPUTS=($(chain "${@}"))
@@ -92,7 +99,7 @@ function writeLeaf(fileName) {
 }
 
 function writeFile(fileName) {
-	let body = hd.strip(function() {/*
+	let body = hd.strip(() => {/*
 		#!/bin/bash
 		FILEPATH=$0
 		if [[ -L ${FILEPATH} ]]; then
@@ -112,7 +119,7 @@ function writeFile(fileName) {
 				ITEM=$(printf "${BASH_REMATCH[1]}")
 			fi
 			local INPUT=$(${WORKDIR}/drv.${ITEM} "${INPUT[@]}")
-			printf "${INPUT}" | jq --tab .
+			printf "%s" "${INPUT}" | jq --tab .
 		}
 		IFS=$'\n'
 		INPUTS=($(chain "${@}"))
@@ -130,7 +137,7 @@ function writeFile(fileName) {
 }
 
 function writeDriver(fileName) {
-        let body = hd.strip(function() {/*
+        let body = hd.strip(() => {/*
 		#!/bin/bash
 		FILEPATH=$0
 		if [[ -L ${FILEPATH} ]]; then
@@ -163,7 +170,7 @@ function writeDriver(fileName) {
 }
 
 function writeList(fileName) {
-	let body = hd.strip(function() {/*
+	let body = hd.strip(() => {/*
 		#!/bin/bash
 		FILEPATH=$0
 		if [[ -L ${FILEPATH} ]]; then
@@ -182,7 +189,7 @@ function writeList(fileName) {
 				ITEM=$(printf "${BASH_REMATCH[1]}")
 			fi
 			local INPUT=$(${WORKDIR}/drv.${ITEM})
-			printf "${INPUT}" | jq --tab .
+			printf "%s" "${INPUT}" | jq --tab .
 		}
 		IFS=$'\n'
 		INPUTS=($(chain "${@}"))

@@ -1,0 +1,2038 @@
+{
+	"aaa": {
+		"registration-token": {
+			"get": 1,
+			"{token}": {
+				"get": 1
+			}
+		},
+		"role-bindings": {
+			"get": 1,
+			"{binding-id}": {
+				"get": 1
+			}
+		},
+		"roles": {
+			"get": 1,
+			"{role}": {
+				"get": 1
+			}
+		},
+		"user-info": {
+			"get": 1
+		},
+		"vidm": {
+			"groups": {
+				"get": 1
+			},
+			"search": {
+				"get": 1
+			},
+			"users": {
+				"get": 1
+			}
+		}
+	},
+	"administration": {
+		"audit-logs": {
+			"get": 1
+		}
+	},
+	"app-discovery": {
+		"app-profiles": {
+			"get": 1,
+			"{app-profile-id}": {
+				"get": 1
+			}
+		},
+		"sessions": {
+			"get": 1,
+			"{session-id}": {
+				"get": 1,
+				"app-profiles": {
+					"get": 1
+				},
+				"installed-apps": {
+					"get": 1
+				},
+				"ns-groups": {
+					"get": 1,
+					"{ns-group-id}": {
+						"members": {
+							"get": 1
+						}
+					}
+				},
+				"re-classify": {
+					"get": 1
+				},
+				"report": {},
+				"summary": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"associations": {
+		"get": 1
+	},
+	"batch": {
+		"get": 1
+	},
+	"bridge-clusters": {
+		"get": 1,
+		"{bridgecluster-id}": {
+			"get": 1
+		},
+		"{cluster-id}": {
+			"status": {
+				"get": 1
+			}
+		}
+	},
+	"bridge-endpoint-profiles": {
+		"get": 1,
+		"{bridgeendpointprofile-id}": {
+			"get": 1
+		}
+	},
+	"bridge-endpoints": {
+		"get": 1,
+		"{bridgeendpoint-id}": {
+			"get": 1
+		},
+		"{endpoint-id}": {
+			"statistics": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		}
+	},
+	"capacity": {
+		"threshold": {
+			"get": 1
+		},
+		"usage": {
+			"get": 1
+		}
+	},
+	"cluster": {
+		"get": 1,
+		"api-certificate": {
+			"get": 1
+		},
+		"api-service": {
+			"get": 1
+		},
+		"api-virtual-ip": {
+			"get": 1
+		},
+		"backups": {
+			"config": {
+				"get": 1
+			},
+			"history": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		},
+		"nodes": {
+			"get": 1,
+			"deployments": {
+				"get": 1,
+				"{node-id}": {
+					"get": 1,
+					"status": {
+						"get": 1
+					}
+				}
+			},
+			"status": {
+				"get": 1
+			},
+			"{node-id}": {
+				"get": 1,
+				"network": {
+					"interfaces": {
+						"get": 1,
+						"{interface-id}": {
+							"get": 1,
+							"stats": {
+								"get": 1
+							}
+						}
+					}
+				},
+				"repo_sync": {
+					"status": {
+						"get": 1
+					}
+				},
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"restore": {
+			"backuptimestamps": {
+				"get": 1
+			},
+			"config": {
+				"get": 1
+			},
+			"instruction-resources": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		},
+		"status": {
+			"get": 1
+		},
+		"{node-id}": {
+			"get": 1
+		},
+		"{target-node-id}": {
+			"{target-uri}": {
+				"get": 1
+			}
+		}
+	},
+	"cluster-profiles": {
+		"get": 1,
+		"{cluster-profile-id}": {
+			"get": 1
+		}
+	},
+	"compute-collection-transport-node-templates": {
+		"get": 1,
+		"{template-id}": {
+			"get": 1,
+			"state": {
+				"get": 1
+			}
+		}
+	},
+	"configs": {
+		"inventory": {
+			"get": 1
+		},
+		"management": {
+			"get": 1
+		}
+	},
+	"dhcp": {
+		"relay-profiles": {
+			"get": 1,
+			"{relay-profile-id}": {
+				"get": 1
+			}
+		},
+		"relays": {
+			"get": 1,
+			"{relay-id}": {
+				"get": 1
+			}
+		},
+		"server-profiles": {
+			"get": 1,
+			"{profile-id}": {
+				"get": 1
+			}
+		},
+		"servers": {
+			"get": 1,
+			"{server-id}": {
+				"get": 1,
+				"ip-pools": {
+					"get": 1,
+					"{pool-id}": {
+						"get": 1
+					}
+				},
+				"leases": {
+					"get": 1
+				},
+				"static-bindings": {
+					"get": 1,
+					"{binding-id}": {
+						"get": 1
+					}
+				},
+				"statistics": {
+					"get": 1
+				},
+				"status": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"directory": {
+		"domains": {
+			"get": 1,
+			"{domain-id}": {
+				"get": 1,
+				"groups": {
+					"get": 1,
+					"{group-id}": {
+						"member-groups": {
+							"get": 1
+						}
+					}
+				},
+				"ldap-servers": {
+					"get": 1,
+					"{server-id}": {
+						"get": 1
+					}
+				},
+				"sync-stats": {
+					"get": 1
+				}
+			}
+		},
+		"ldap-server": {
+			"get": 1
+		}
+	},
+	"dns": {
+		"forwarders": {
+			"get": 1,
+			"{forwarder-id}": {
+				"get": 1,
+				"nslookup": {
+					"get": 1
+				},
+				"statistics": {
+					"get": 1
+				},
+				"status": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"edge-clusters": {
+		"get": 1,
+		"{edge-cluster-id}": {
+			"get": 1,
+			"state": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		}
+	},
+	"error-resolver": {
+		"get": 1,
+		"{error_id}": {
+			"get": 1
+		}
+	},
+	"eula": {
+		"accept": {
+			"get": 1
+		},
+		"acceptance": {
+			"get": 1
+		},
+		"content": {
+			"get": 1
+		}
+	},
+	"fabric": {
+		"compute-collection-fabric-templates": {
+			"get": 1,
+			"{fabric-template-id}": {
+				"get": 1
+			}
+		},
+		"compute-collections": {
+			"get": 1,
+			"{cc-ext-id}": {
+				"get": 1,
+				"network": {
+					"physical-interfaces": {
+						"get": 1
+					}
+				}
+			}
+		},
+		"compute-managers": {
+			"get": 1,
+			"{compute-manager-id}": {
+				"get": 1,
+				"state": {
+					"get": 1
+				},
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"discovered-nodes": {
+			"get": 1,
+			"{node-ext-id}": {
+				"get": 1
+			}
+		},
+		"nodes": {
+			"get": 1,
+			"status": {
+				"get": 1
+			},
+			"{node-id}": {
+				"get": 1,
+				"capabilities": {
+					"get": 1
+				},
+				"modules": {
+					"get": 1
+				},
+				"network": {
+					"interfaces": {
+						"get": 1,
+						"{interface-id}": {
+							"get": 1,
+							"stats": {
+								"get": 1
+							}
+						}
+					}
+				},
+				"state": {
+					"get": 1
+				},
+				"status": {
+					"get": 1
+				}
+			},
+			"{target-node-id}": {
+				"{target-uri}": {
+					"get": 1
+				}
+			}
+		},
+		"ostypes": {
+			"get": 1
+		},
+		"vifs": {
+			"get": 1
+		},
+		"virtual-machines": {
+			"get": 1,
+			"tools-info": {
+				"get": 1
+			}
+		}
+	},
+	"firewall": {
+		"excludelist": {
+			"get": 1
+		},
+		"profiles": {
+			"get": 1,
+			"{profile-id}": {
+				"get": 1
+			}
+		},
+		"rules": {
+			"{rule-id}": {
+				"get": 1,
+				"state": {
+					"get": 1
+				}
+			}
+		},
+		"sections": {
+			"get": 1,
+			"summary": {
+				"get": 1
+			},
+			"{section-id}": {
+				"get": 1,
+				"rules": {
+					"get": 1,
+					"stats": {
+						"get": 1
+					},
+					"{rule-id}": {
+						"get": 1,
+						"stats": {
+							"get": 1
+						}
+					}
+				},
+				"state": {
+					"get": 1
+				}
+			}
+		},
+		"status": {
+			"get": 1,
+			"{context-type}": {
+				"get": 1,
+				"{id}": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"global-configs": {
+		"get": 1,
+		"{config-type}": {
+			"get": 1
+		}
+	},
+	"host-switch-profiles": {
+		"get": 1,
+		"{host-switch-profile-id}": {
+			"get": 1
+		}
+	},
+	"hpm": {
+		"alarms": {
+			"get": 1
+		},
+		"features": {
+			"get": 1,
+			"{feature-stack-name}": {
+				"get": 1
+			}
+		},
+		"global-config": {
+			"get": 1
+		}
+	},
+	"idfw": {
+		"compute-collections": {
+			"status": {
+				"get": 1
+			},
+			"{cc-ext-id}": {
+				"transport-nodes": {
+					"status": {
+						"get": 1
+					}
+				}
+			},
+			"{compute-collection-ext-id}": {
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"idfw-compute-collections": {
+			"get": 1,
+			"{cc-ext-id}": {
+				"get": 1
+			}
+		},
+		"master-switch-setting": {
+			"get": 1
+		},
+		"nsgroup-vm-details": {
+			"{group-id}": {
+				"get": 1
+			}
+		},
+		"standalone-host-switch-setting": {
+			"get": 1
+		},
+		"system-stats": {
+			"get": 1
+		},
+		"transport-nodes": {
+			"{transport-node-id}": {
+				"vms": {
+					"status": {
+						"get": 1
+					}
+				}
+			}
+		},
+		"user-session-data": {
+			"get": 1
+		},
+		"user-stats": {
+			"{user-id}": {
+				"get": 1
+			}
+		},
+		"vm-stats": {
+			"{vm-ext-id}": {
+				"get": 1
+			}
+		}
+	},
+	"ip-sets": {
+		"get": 1,
+		"{ip-set-id}": {
+			"get": 1,
+			"members": {
+				"get": 1
+			}
+		}
+	},
+	"ipfix-collector-profiles": {
+		"get": 1,
+		"{ipfix-collector-profile-id}": {
+			"get": 1
+		}
+	},
+	"ipfix-obs-points": {
+		"get": 1,
+		"switch-global": {
+			"get": 1
+		}
+	},
+	"ipfix-profiles": {
+		"get": 1,
+		"{ipfix-profile-id}": {
+			"get": 1
+		}
+	},
+	"ipfix": {
+		"collectorconfigs": {
+			"get": 1,
+			"{collector-config-id}": {
+				"get": 1
+			}
+		},
+		"configs": {
+			"get": 1,
+			"{config-id}": {
+				"get": 1
+			}
+		}
+	},
+	"license": {
+		"get": 1
+	},
+	"licenses": {
+		"get": 1,
+		"licenses-usage": {
+			"get": 1
+		},
+		"{license-key}": {
+			"get": 1
+		}
+	},
+	"lldp": {
+		"fabric-nodes": {
+			"{fabric-node-id}": {
+				"interfaces": {
+					"get": 1,
+					"{interface-name}": {
+						"get": 1
+					}
+				}
+			}
+		},
+		"transport-nodes": {
+			"{node-id}": {
+				"interfaces": {
+					"get": 1,
+					"{interface-name}": {
+						"get": 1
+					}
+				}
+			}
+		}
+	},
+	"loadbalancer": {
+		"application-profiles": {
+			"get": 1,
+			"{application-profile-id}": {
+				"get": 1
+			}
+		},
+		"client-ssl-profiles": {
+			"get": 1,
+			"{client-ssl-profile-id}": {
+				"get": 1
+			}
+		},
+		"monitors": {
+			"get": 1,
+			"{monitor-id}": {
+				"get": 1
+			}
+		},
+		"persistence-profiles": {
+			"get": 1,
+			"{persistence-profile-id}": {
+				"get": 1
+			}
+		},
+		"pools": {
+			"get": 1,
+			"{pool-id}": {
+				"get": 1
+			}
+		},
+		"rules": {
+			"get": 1,
+			"{rule-id}": {
+				"get": 1
+			}
+		},
+		"server-ssl-profiles": {
+			"get": 1,
+			"{server-ssl-profile-id}": {
+				"get": 1
+			}
+		},
+		"services": {
+			"get": 1,
+			"{service-id}": {
+				"get": 1,
+				"debug-info": {
+					"get": 1
+				},
+				"pools": {
+					"statistics": {
+						"get": 1
+					},
+					"status": {
+						"get": 1
+					},
+					"{pool-id}": {
+						"statistics": {
+							"get": 1
+						},
+						"status": {
+							"get": 1
+						}
+					}
+				},
+				"statistics": {
+					"get": 1
+				},
+				"status": {
+					"get": 1
+				},
+				"usage": {
+					"get": 1
+				},
+				"virtual-servers": {
+					"statistics": {
+						"get": 1
+					},
+					"status": {
+						"get": 1
+					},
+					"{virtual-server-id}": {
+						"statistics": {
+							"get": 1
+						},
+						"status": {
+							"get": 1
+						}
+					}
+				}
+			}
+		},
+		"ssl": {
+			"ciphers-and-protocols": {
+				"get": 1
+			}
+		},
+		"tcp-profiles": {
+			"get": 1,
+			"{tcp-profile-id}": {
+				"get": 1
+			}
+		},
+		"virtual-servers": {
+			"get": 1,
+			"{virtual-server-id}": {
+				"get": 1
+			}
+		}
+	},
+	"logical-ports": {
+		"get": 1,
+		"status": {
+			"get": 1
+		},
+		"{lport-id}": {
+			"get": 1,
+			"forwarding-path": {
+				"get": 1
+			},
+			"mac-table": {
+				"get": 1
+			},
+			"state": {
+				"get": 1
+			},
+			"statistics": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		}
+	},
+	"logical-router-ports": {
+		"get": 1,
+		"{logical-router-port-id}": {
+			"get": 1,
+			"arp-table": {
+				"get": 1
+			},
+			"state": {
+				"get": 1
+			},
+			"statistics": {
+				"get": 1,
+				"summary": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"logical-routers": {
+		"get": 1,
+		"{logical-router-id}": {
+			"get": 1,
+			"nat": {
+				"rules": {
+					"get": 1,
+					"statistics": {
+						"get": 1
+					},
+					"{rule-id}": {
+						"get": 1,
+						"statistics": {
+							"get": 1
+						}
+					}
+				}
+			},
+			"routing": {
+				"get": 1,
+				"advertisement": {
+					"get": 1,
+					"rules": {
+						"get": 1
+					}
+				},
+				"bfd-config": {
+					"get": 1
+				},
+				"bgp": {
+					"get": 1,
+					"community-lists": {
+						"get": 1,
+						"{community-list-id}": {
+							"get": 1
+						}
+					},
+					"communty-lists": {
+						"{community-list-id}": {
+							"get": 1
+						}
+					},
+					"neighbors": {
+						"get": 1,
+						"status": {
+							"get": 1
+						},
+						"{id}": {
+							"get": 1
+						}
+					}
+				},
+				"forwarding-table": {
+					"get": 1
+				},
+				"ip-prefix-lists": {
+					"get": 1,
+					"{id}": {
+						"get": 1
+					}
+				},
+				"redistribution": {
+					"get": 1,
+					"rules": {
+						"get": 1
+					}
+				},
+				"route-maps": {
+					"get": 1,
+					"{id}": {
+						"get": 1
+					}
+				},
+				"route-table": {
+					"get": 1
+				},
+				"routing-table": {
+					"get": 1
+				},
+				"static-routes": {
+					"get": 1,
+					"bfd-peers": {
+						"get": 1,
+						"{bfd-peer-id}": {
+							"get": 1
+						}
+					},
+					"{id}": {
+						"get": 1
+					}
+				}
+			},
+			"service-cluster": {
+				"state": {
+					"get": 1
+				}
+			},
+			"state": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		}
+	},
+	"logical-switches": {
+		"get": 1,
+		"state": {
+			"get": 1
+		},
+		"status": {
+			"get": 1
+		},
+		"{lswitch-id}": {
+			"get": 1,
+			"mac-table": {
+				"get": 1
+			},
+			"state": {
+				"get": 1
+			},
+			"statistics": {
+				"get": 1
+			},
+			"summary": {
+				"get": 1
+			},
+			"vtep-table": {
+				"get": 1
+			}
+		}
+	},
+	"mac-sets": {
+		"get": 1,
+		"{mac-set-id}": {
+			"get": 1,
+			"members": {
+				"get": 1,
+				"{mac-address}": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"md-proxies": {
+		"get": 1,
+		"{proxy-id}": {
+			"get": 1,
+			"statistics": {
+				"get": 1
+			},
+			"{logical-switch-id}": {
+				"status": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"migration": {
+		"discovered-switches": {
+			"get": 1
+		},
+		"feedback-requests": {
+			"get": 1
+		},
+		"feedback-response": {
+			"get": 1
+		},
+		"feedback-summary": {
+			"get": 1
+		},
+		"grouped-feedback-requests": {
+			"get": 1
+		},
+		"logical-constructs": {
+			"stats": {
+				"get": 1
+			}
+		},
+		"migration-unit-groups": {
+			"get": 1,
+			"aggregate-info": {
+				"get": 1
+			},
+			"{group-id}": {
+				"get": 1,
+				"migration-unit": {},
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"migration-unit-groups-status": {
+			"get": 1
+		},
+		"migration-units": {
+			"get": 1,
+			"aggregate-info": {
+				"get": 1
+			},
+			"{migration-unit-id}": {
+				"get": 1
+			}
+		},
+		"migration-units-stats": {
+			"get": 1
+		},
+		"nodes": {
+			"get": 1
+		},
+		"nodes-summary": {
+			"get": 1
+		},
+		"plan": {
+			"{component_type}": {
+				"settings": {
+					"get": 1
+				}
+			}
+		},
+		"setup": {
+			"get": 1
+		},
+		"status-summary": {
+			"get": 1
+		},
+		"summary": {
+			"get": 1
+		},
+		"switch": {
+			"get": 1
+		}
+	},
+	"mirror-sessions": {
+		"get": 1,
+		"{mirror-session-id}": {
+			"get": 1
+		}
+	},
+	"network-migration-specs": {
+		"get": 1,
+		"{template-id}": {
+			"get": 1
+		}
+	},
+	"node": {
+		"get": 1,
+		"aaa": {
+			"auth-policy": {
+				"get": 1
+			},
+			"providers": {
+				"vidm": {
+					"get": 1,
+					"status": {
+						"get": 1
+					}
+				}
+			}
+		},
+		"file-store": {
+			"get": 1,
+			"{file-name}": {
+				"get": 1,
+				"data": {
+					"get": 1
+				},
+				"thumbprint": {
+					"get": 1
+				}
+			}
+		},
+		"hardening-policy": {
+			"mandatory-access-control": {
+				"get": 1,
+				"report": {
+					"get": 1
+				}
+			}
+		},
+		"logs": {
+			"get": 1,
+			"{log-name}": {
+				"get": 1,
+				"data": {
+					"get": 1
+				}
+			}
+		},
+		"mode": {
+			"get": 1
+		},
+		"network": {
+			"get": 1,
+			"interfaces": {
+				"get": 1,
+				"{interface-id}": {
+					"get": 1,
+					"stats": {
+						"get": 1
+					}
+				}
+			},
+			"name-servers": {
+				"get": 1
+			},
+			"routes": {
+				"get": 1,
+				"{route-id}": {
+					"get": 1
+				}
+			},
+			"search-domains": {
+				"get": 1
+			}
+		},
+		"processes": {
+			"get": 1,
+			"{process-id}": {
+				"get": 1
+			}
+		},
+		"rabbitmq-management-port": {
+			"get": 1
+		},
+		"services": {
+			"get": 1,
+			"cluster_manager": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"cm-inventory": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"http": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"install-upgrade": {
+				"get": 1,
+				"status": {
+					"get": 1
+				},
+				"uc-state": {
+					"get": 1
+				}
+			},
+			"liagent": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"manager": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"mgmt-plane-bus": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"migration-coordinator": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"node-mgmt": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"nsx-message-bus": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"nsx-upgrade-agent": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"ntp": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"search": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"snmp": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"ssh": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"syslog": {
+				"get": 1,
+				"exporters": {
+					"get": 1,
+					"{exporter-name}": {
+						"get": 1
+					}
+				},
+				"status": {
+					"get": 1
+				}
+			},
+			"telemetry": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			},
+			"ui-service": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"status": {
+			"get": 1
+		},
+		"support-bundle": {
+			"get": 1
+		},
+		"tasks": {
+			"get": 1,
+			"{task-id}": {
+				"get": 1,
+				"response": {
+					"get": 1
+				}
+			}
+		},
+		"users": {
+			"get": 1,
+			"{userid}": {
+				"get": 1,
+				"ssh-keys": {
+					"get": 1
+				}
+			}
+		},
+		"version": {
+			"get": 1
+		}
+	},
+	"normalizations": {
+		"get": 1
+	},
+	"notification-watchers": {
+		"get": 1,
+		"{watcher-id}": {
+			"get": 1,
+			"notifications": {
+				"get": 1
+			}
+		}
+	},
+	"ns-groups": {
+		"get": 1,
+		"unassociated-virtual-machines": {
+			"get": 1
+		},
+		"{ns-group-id}": {
+			"get": 1,
+			"effective-directory-group-members": {
+				"get": 1
+			},
+			"effective-ip-address-members": {
+				"get": 1
+			},
+			"effective-ipset-members": {
+				"get": 1
+			},
+			"effective-logical-port-members": {
+				"get": 1
+			},
+			"effective-logical-switch-members": {
+				"get": 1
+			},
+			"effective-transport-node-members": {
+				"get": 1
+			},
+			"effective-vif-members": {
+				"get": 1
+			},
+			"effective-virtual-machine-members": {
+				"get": 1
+			},
+			"member-types": {
+				"get": 1
+			}
+		},
+		"{nsgroup-id}": {
+			"service-associations": {
+				"get": 1
+			}
+		}
+	},
+	"ns-profiles": {
+		"get": 1,
+		"attribute-types": {
+			"get": 1
+		},
+		"attributes": {
+			"get": 1
+		},
+		"{ns-profile-id}": {
+			"get": 1
+		}
+	},
+	"ns-service-groups": {
+		"get": 1,
+		"{ns-service-group-id}": {
+			"get": 1
+		}
+	},
+	"ns-services": {
+		"get": 1,
+		"{ns-service-id}": {
+			"get": 1
+		}
+	},
+	"pbr": {
+		"sections": {
+			"get": 1,
+			"{section-id}": {
+				"get": 1,
+				"rules": {
+					"get": 1,
+					"stats": {
+						"get": 1
+					},
+					"{rule-id}": {
+						"get": 1,
+						"stats": {
+							"get": 1
+						}
+					}
+				}
+			}
+		}
+	},
+	"pktcap": {
+		"session": {
+			"get": 1,
+			"{session-id}": {
+				"get": 1
+			}
+		},
+		"sessions": {
+			"get": 1
+		}
+	},
+	"pools": {
+		"ip-blocks": {
+			"get": 1,
+			"{block-id}": {
+				"get": 1
+			}
+		},
+		"ip-pools": {
+			"get": 1,
+			"{pool-id}": {
+				"get": 1,
+				"allocations": {
+					"get": 1
+				}
+			}
+		},
+		"ip-subnets": {
+			"get": 1,
+			"{subnet-id}": {
+				"get": 1
+			}
+		},
+		"mac-pools": {
+			"get": 1,
+			"{pool-id}": {
+				"get": 1
+			}
+		},
+		"vni-pools": {
+			"get": 1,
+			"{pool-id}": {
+				"get": 1
+			}
+		},
+		"vtep-label-pools": {
+			"get": 1,
+			"{pool-id}": {
+				"get": 1
+			}
+		}
+	},
+	"realization-state-barrier": {
+		"config": {
+			"get": 1
+		},
+		"current": {
+			"get": 1
+		}
+	},
+	"service-configs": {
+		"get": 1,
+		"effective-profiles": {
+			"get": 1
+		},
+		"{config-set-id}": {
+			"get": 1
+		}
+	},
+	"service-profiles": {
+		"get": 1,
+		"{service-profile-id}": {
+			"get": 1
+		}
+	},
+	"serviceinsertion": {
+		"sections": {
+			"get": 1,
+			"{section-id}": {
+				"get": 1,
+				"rules": {
+					"get": 1,
+					"{rule-id}": {
+						"get": 1
+					}
+				}
+			}
+		},
+		"service-attachments": {
+			"get": 1,
+			"{service-attachment-id}": {
+				"get": 1
+			}
+		},
+		"service-chains": {
+			"get": 1,
+			"{service-chain-id}": {
+				"get": 1
+			}
+		},
+		"service-instances": {
+			"get": 1
+		},
+		"service-managers": {
+			"get": 1,
+			"{service-manager-id}": {
+				"get": 1
+			}
+		},
+		"services": {
+			"get": 1,
+			"{service-id}": {
+				"get": 1,
+				"service-deployments": {
+					"get": 1,
+					"{service-deployment-id}": {
+						"get": 1,
+						"state": {
+							"get": 1
+						},
+						"status": {
+							"get": 1
+						}
+					}
+				},
+				"service-instances": {
+					"get": 1,
+					"{service-instance-id}": {
+						"get": 1,
+						"instance-endpoints": {
+							"get": 1,
+							"{instance-endpoint-id}": {
+								"get": 1
+							}
+						},
+						"instance-runtimes": {
+							"get": 1,
+							"{instance-runtime-id}": {
+								"get": 1,
+								"interfaces": {
+									"{interface_index}": {
+										"statistics": {
+											"get": 1
+										},
+										"status": {
+											"get": 1
+										}
+									}
+								}
+							}
+						},
+						"state": {
+							"get": 1
+						},
+						"status": {
+							"get": 1
+						}
+					}
+				},
+				"service-profiles": {
+					"get": 1,
+					"{service-profile-id}": {
+						"get": 1,
+						"nsgroups": {
+							"get": 1
+						},
+						"service-chain-mappings": {
+							"get": 1
+						}
+					}
+				},
+				"solution-configs": {
+					"get": 1,
+					"{solution-config-id}": {
+						"get": 1
+					}
+				},
+				"vendor-templates": {
+					"get": 1,
+					"{vendor-template-id}": {
+						"get": 1
+					}
+				}
+			}
+		}
+	},
+	"services": {
+		"get": 1,
+		"{service-id}": {
+			"get": 1
+		}
+	},
+	"switching-profiles": {
+		"get": 1,
+		"{switching-profile-id}": {
+			"get": 1,
+			"summary": {
+				"get": 1
+			}
+		}
+	},
+	"tasks": {
+		"get": 1,
+		"{task-id}": {
+			"get": 1,
+			"response": {
+				"get": 1
+			}
+		}
+	},
+	"telemetry": {
+		"agreement": {
+			"get": 1
+		},
+		"config": {
+			"get": 1
+		}
+	},
+	"traceflows": {
+		"get": 1,
+		"{traceflow-id}": {
+			"get": 1,
+			"observations": {
+				"get": 1
+			}
+		}
+	},
+	"transport-node-collections": {
+		"get": 1,
+		"{transport-node-collection-id}": {
+			"get": 1,
+			"state": {
+				"get": 1
+			}
+		}
+	},
+	"transport-node-profiles": {
+		"get": 1,
+		"{transport-node-profile-id}": {
+			"get": 1
+		}
+	},
+	"transport-nodes": {
+		"get": 1,
+		"state": {
+			"get": 1
+		},
+		"status": {
+			"get": 1
+		},
+		"{node-id}": {
+			"pnic-bond-status": {
+				"get": 1
+			},
+			"remote-transport-node-status": {
+				"get": 1
+			},
+			"statistics": {
+				"nat-rules": {
+					"get": 1
+				}
+			},
+			"status": {
+				"get": 1
+			},
+			"tunnels": {
+				"get": 1,
+				"{tunnel-name}": {
+					"get": 1
+				}
+			}
+		},
+		"{transport-node-id}": {
+			"get": 1,
+			"capabilities": {
+				"get": 1
+			},
+			"network": {
+				"interfaces": {
+					"get": 1,
+					"{interface-id}": {
+						"get": 1,
+						"stats": {
+							"get": 1
+						}
+					}
+				}
+			},
+			"state": {
+				"get": 1
+			}
+		},
+		"{transportnode-id}": {
+			"get": 1
+		}
+	},
+	"transport-zones": {
+		"get": 1,
+		"status": {
+			"get": 1
+		},
+		"transport-node-status": {
+			"get": 1
+		},
+		"transport-node-status-report": {
+			"get": 1
+		},
+		"{zone-id}": {
+			"get": 1,
+			"status": {
+				"get": 1
+			},
+			"summary": {
+				"get": 1
+			},
+			"transport-node-status": {
+				"get": 1
+			},
+			"transport-node-status-report": {
+				"get": 1
+			}
+		}
+	},
+	"transportzone-profiles": {
+		"get": 1,
+		"{transportzone-profile-id}": {
+			"get": 1
+		}
+	},
+	"trust-management": {
+		"get": 1,
+		"certificates": {
+			"get": 1,
+			"{cert-id}": {
+				"get": 1
+			}
+		},
+		"crl-distribution-points": {
+			"get": 1,
+			"pem-file": {
+				"get": 1
+			},
+			"{crl-distribution-point-id}": {
+				"get": 1,
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"crls": {
+			"get": 1,
+			"{crl-id}": {
+				"get": 1
+			}
+		},
+		"csrs": {
+			"get": 1,
+			"{csr-id}": {
+				"get": 1,
+				"pem-file": {
+					"get": 1
+				}
+			}
+		},
+		"principal-identities": {
+			"get": 1,
+			"with-certificate": {
+				"get": 1
+			},
+			"{principal-identity-id}": {
+				"get": 1
+			}
+		}
+	},
+	"ui-views": {
+		"get": 1,
+		"{view-id}": {
+			"get": 1,
+			"widgetconfigurations": {
+				"get": 1,
+				"{widgetconfiguration-id}": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"upgrade": {
+		"bundles": {
+			"get": 1,
+			"{bundle-id}": {
+				"get": 1,
+				"upload-status": {
+					"get": 1
+				}
+			}
+		},
+		"eula": {
+			"accept": {
+				"get": 1
+			},
+			"acceptance": {
+				"get": 1
+			},
+			"content": {
+				"get": 1
+			}
+		},
+		"functional-state": {
+			"get": 1
+		},
+		"history": {
+			"get": 1
+		},
+		"nodes": {
+			"get": 1
+		},
+		"nodes-summary": {
+			"get": 1
+		},
+		"plan": {
+			"{component_type}": {
+				"settings": {
+					"get": 1
+				}
+			}
+		},
+		"status-summary": {
+			"get": 1
+		},
+		"summary": {
+			"get": 1
+		},
+		"uc-upgrade-status": {
+			"get": 1
+		},
+		"upgrade-checks-info": {
+			"get": 1
+		},
+		"upgrade-unit-groups": {
+			"get": 1,
+			"aggregate-info": {
+				"get": 1
+			},
+			"{group-id}": {
+				"get": 1,
+				"status": {
+					"get": 1
+				},
+				"upgrade-unit": {}
+			}
+		},
+		"upgrade-unit-groups-status": {
+			"get": 1
+		},
+		"upgrade-units": {
+			"get": 1,
+			"aggregate-info": {
+				"get": 1
+			},
+			"{upgrade-unit-id}": {
+				"get": 1
+			}
+		},
+		"upgrade-units-stats": {
+			"get": 1
+		},
+		"version-whitelist": {
+			"get": 1,
+			"{component_type}": {
+				"get": 1
+			}
+		}
+	},
+	"vpn": {
+		"ipsec": {
+			"dpd-profiles": {
+				"get": 1,
+				"{ipsec-vpn-dpd-profile-id}": {
+					"get": 1
+				}
+			},
+			"ike-profiles": {
+				"get": 1,
+				"{ipsec-vpn-ike-profile-id}": {
+					"get": 1
+				}
+			},
+			"local-endpoints": {
+				"get": 1,
+				"{ipsec-vpn-local-endpoint-id}": {
+					"get": 1
+				}
+			},
+			"peer-endpoints": {
+				"get": 1,
+				"{ipsec-vpn-peer-endpoint-id}": {
+					"get": 1
+				}
+			},
+			"services": {
+				"get": 1,
+				"{ipsec-vpn-service-id}": {
+					"get": 1
+				}
+			},
+			"sessions": {
+				"get": 1,
+				"summary": {
+					"get": 1
+				},
+				"{ipsec-vpn-session-id}": {
+					"get": 1,
+					"peer-config": {
+						"get": 1
+					},
+					"state": {
+						"get": 1
+					}
+				},
+				"{session-id}": {
+					"statistics": {
+						"get": 1
+					},
+					"status": {
+						"get": 1
+					}
+				}
+			},
+			"tunnel-profiles": {
+				"get": 1,
+				"{ipsec-vpn-tunnel-profile-id}": {
+					"get": 1
+				}
+			}
+		},
+		"l2vpn": {
+			"services": {
+				"get": 1,
+				"{l2vpn-service-id}": {
+					"get": 1
+				}
+			},
+			"sessions": {
+				"get": 1,
+				"summary": {
+					"get": 1
+				},
+				"{l2vpn-session-id}": {
+					"get": 1,
+					"peer-codes": {
+						"get": 1
+					}
+				},
+				"{session-id}": {
+					"remote-mac": {
+						"get": 1
+					},
+					"statistics": {
+						"get": 1
+					},
+					"status": {
+						"get": 1
+					}
+				}
+			}
+		},
+		"services": {
+			"{service-id}": {
+				"summary": {
+					"get": 1
+				}
+			}
+		}
+	},
+	"waf": {
+		"categories": {
+			"get": 1,
+			"{category-id}": {
+				"get": 1,
+				"aggregate-info": {
+					"get": 1
+				}
+			}
+		},
+		"crses": {
+			"get": 1,
+			"{crs-id}": {
+				"get": 1,
+				"aggregate-info": {
+					"get": 1
+				},
+				"categories": {
+					"get": 1
+				},
+				"rules": {
+					"get": 1
+				},
+				"status": {
+					"get": 1
+				}
+			}
+		},
+		"default-profile-template": {
+			"get": 1
+		},
+		"ers": {
+			"aggregate-info": {
+				"get": 1
+			},
+			"categories": {
+				"get": 1
+			},
+			"rules": {
+				"get": 1
+			},
+			"status": {
+				"get": 1
+			}
+		},
+		"global-config": {
+			"get": 1
+		},
+		"profiles": {
+			"get": 1,
+			"{profile-id}": {
+				"get": 1
+			}
+		},
+		"rule-statistics": {
+			"categories": {
+				"{category-name}": {
+					"loadbalancer": {
+						"services": {
+							"{service-id}": {
+								"virtual-servers": {
+									"{virtual-server-id}": {
+										"get": 1
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"rules": {
+			"get": 1,
+			"{rule-id}": {
+				"get": 1
+			}
+		},
+		"statistics": {
+			"loadbalancer": {
+				"services": {
+					"{service-id}": {
+						"virtual-servers": {
+							"{virtual-server-id}": {
+								"get": 1
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
