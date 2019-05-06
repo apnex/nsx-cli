@@ -1,0 +1,31 @@
+{
+	"name": "carbon",
+	"version": "0.0.1",
+	"description": "Universal CLI Interface",
+	"license": "MIT",
+	"repository": "apnex/carbon",
+	"author": {
+		"name": "Andrew Obersnel"
+	},
+	"bin": {
+		"carbon": "./lib/carbon.js"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"files": [
+		"/lib"
+	],
+	"keywords": [
+		"carbon",
+		"universal",
+		"cli",
+		"command",
+		"nodejs",
+		""
+	],
+	"dependencies": {
+		"chalk": "*",
+		"heredoc": "*"
+	}
+}

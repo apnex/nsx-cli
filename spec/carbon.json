@@ -1,0 +1,15 @@
+{
+	"complete": {
+		"{cmdfile.json}": {
+			"{cmd}": 1
+		}
+	},
+	"generate": {
+		"{cmdfile.json}": {
+			"{cmdname}": 1
+		}
+	},
+	"build": {
+		"get": 1
+	}
+}
